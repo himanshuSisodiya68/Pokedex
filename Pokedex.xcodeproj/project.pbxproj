@@ -12,6 +12,7 @@
 		A36D91451F17805800FAA7CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A36D91431F17805800FAA7CA /* Main.storyboard */; };
 		A36D91471F17805800FAA7CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A36D91461F17805800FAA7CA /* Assets.xcassets */; };
 		A36D914A1F17805800FAA7CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A36D91481F17805800FAA7CA /* LaunchScreen.storyboard */; };
+		A36D91521F17878C00FAA7CA /* pokemon.csv in Resources */ = {isa = PBXBuildFile; fileRef = A36D91511F17878C00FAA7CA /* pokemon.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		A36D91461F17805800FAA7CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A36D91491F17805800FAA7CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A36D914B1F17805800FAA7CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A36D91511F17878C00FAA7CA /* pokemon.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pokemon.csv; path = ../pokemon.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				A36D91461F17805800FAA7CA /* Assets.xcassets */,
 				A36D91481F17805800FAA7CA /* LaunchScreen.storyboard */,
 				A36D914B1F17805800FAA7CA /* Info.plist */,
+				A36D91511F17878C00FAA7CA /* pokemon.csv */,
 			);
 			path = Pokedex;
 			sourceTree = "<group>";
@@ -125,6 +128,7 @@
 			files = (
 				A36D914A1F17805800FAA7CA /* LaunchScreen.storyboard in Resources */,
 				A36D91471F17805800FAA7CA /* Assets.xcassets in Resources */,
+				A36D91521F17878C00FAA7CA /* pokemon.csv in Resources */,
 				A36D91451F17805800FAA7CA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
