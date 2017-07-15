@@ -155,7 +155,5 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             collection.reloadData()
         }
     }
-    
-
 }
 

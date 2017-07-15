@@ -20,7 +20,31 @@ class Pokemon{
     private var _defense:String!
     private var _attack:String!
     private var _nextEvolutionTxt:String!
+    private var _nextEvolutionName:String!
+    private var _nextEvolutionId:String!
+    private var _nextEvolutionLevel:String!
     private var _pokemonURL:String!
+    
+    
+    var nextEvolutionName:String{
+        if _nextEvolutionName == nil{
+            _nextEvolutionName = ""
+        }
+        return _nextEvolutionName
+    }
+    
+    var nextEvolutionId:String{
+        if _nextEvolutionId == nil{
+            _nextEvolutionId = ""
+        }
+        return _nextEvolutionId
+    }
+    var nextEvolutionLevel:String{
+        if _nextEvolutionLevel == nil{
+            _nextEvolutionLevel = ""
+        }
+        return _nextEvolutionLevel
+    }
     
     var description:String{
         if _description == nil{
@@ -112,23 +136,49 @@ class Pokemon{
                 }else{
                     self._type = ""
                 }
-                
-                if let descArr = dict["descriptions"] as? [Dictionary<String, String>], descArr.count>0{
-                    if let url = descArr[0]["resource_uri"]{
-                        let descURL = "\(URL_BASE)\(url)"
-                        Alamofire.request(descURL).responseJSON(completionHandler:{(reponse) in
-                            if let descDict = response.result.value as? Dictionary<String, AnyObject>{
-                                if let description = descDict["description"] as? String{
-                                    print(description)
-                                    self._description = description
+                ///not working
+                    if let descArr = dict["descriptions"] as? [Dictionary<String, String>], descArr.count>0{
+                        if let url = descArr[0]["resource_uri"]{
+                            let descURL = "\(URL_BASE)\(url)"
+                            print(descURL)
+                            Alamofire.request(descURL).responseJSON{(response) in
+                                if let descDict = response.result.value as? Dictionary<String, AnyObject>{
+                                    if let description = descDict["description"] as? String{
+                                        print(description)
+                                        self._description = description
+                                    }
                                 }
                             }
-                            completed()
-                        })
-                    }else{
-                        self._description = "Description not fetched!"
+                        }else{
+                            self._description = "Description not fetched!"
+                        }
+                        
+                        if let evolutions = dict["evolutions"] as? [Dictionary<String, AnyObject>], evolutions.count>0{
+                            if let nextEvo = evolutions[0]["to"] as? String{
+                                if nextEvo.range(of: "mega") == nil{
+                                    self._nextEvolutionName = nextEvo
+                                    if let url = evolutions[0]["resource_uri"] as? String{
+                                        let newStr = url.replacingOccurrences(of: "/api/v1/pokemon/", with: "")
+                                        let nextEvoId = newStr.replacingOccurrences(of: "/", with: "")
+                                        self._nextEvolutionId = nextEvoId
+                                        
+                                        if let nextLevelExist = evolutions[0]["level"]{
+                                            if let lvl = nextLevelExist as? Int{
+                                                self._nextEvolutionLevel = "\(lvl)"
+                                            }
+                                        }else{
+                                            self._nextEvolutionLevel = ""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        print(self.nextEvolutionName)
+                        print(self.nextEvolutionId)
+                        print(self.nextEvolutionLevel)
+                        
                     }
-                }
+                ///not working
             }
             completed()
             //print(response)
