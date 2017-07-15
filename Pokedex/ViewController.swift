@@ -121,7 +121,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 105, height: 105)
+        var collectionViewSize = collectionView.frame.size
+        collectionViewSize.width = collectionViewSize.width/3.3 //Display Three elements in a row.
+        collectionViewSize.height = collectionViewSize.height/4.3
+        return collectionViewSize
+        //return CGSize(width: 105, height: 105)
     }
     
     @IBAction func musicButtonPressed(_ sender: UIButton) {
